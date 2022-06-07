@@ -1,8 +1,11 @@
 import React from 'react'
+import Navbar from '../../components/Navbar/Navbar'
 
 function InvoiceGenerator() {
     return (
-        <div>Invoice Generator page</div>
+        <>
+            <Navbar />
+        </>
     )
 }
 

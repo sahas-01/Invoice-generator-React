@@ -57,3 +57,12 @@
     font-family: 'Prompt', sans-serif;
     margin: 45px;
 }
+
+.invoice-img {
+    position: absolute;
+    width: 500px;
+    height: 450px;
+    left: 870px;
+    top: 80px;
+    transform: rotate(5deg);
+}
