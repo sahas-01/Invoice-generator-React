@@ -1,0 +1,59 @@
+.landingcontainer {
+    height: 250px;
+    width: 100%;
+    background-color: #fff;
+    box-shadow: 0px 3.57967px 37.5866px rgba(189, 189, 189, 0.25);
+}
+
+.invoice-btn {
+    background: #7161C5;
+    border-radius: 14px;
+    color: #fff;
+    font-size: 17px;
+    font-weight: 700;
+    cursor: pointer;
+    border: none;
+    width: 13.5%;
+    padding: 12.5px 20px;
+    font-family: 'Inter', sans-serif;
+    font-family: 'Prompt', sans-serif;
+}
+
+.invoice-btn:hover {
+    background: #4F4099;
+    color: #fff;
+}
+
+.landingnav {
+    padding: 50px 0px 15px 50px;
+}
+
+.name-input {
+    width: 20%;
+    height: 25px;
+    border: 1px solid #2B2B2B;
+    border-radius: 14px;
+    padding: 10px 20px;
+    font-size: 17px;
+    font-weight: 700;
+    font-family: 'Inter', sans-serif;
+    font-family: 'Prompt', sans-serif;
+    margin-right: 20px;
+}
+
+.name-input:focus {
+    border: 1.5px solid #2B2B2B;
+}
+
+.landingcomponents {
+    margin-left: 46px;
+}
+
+.savedinvoices-heading {
+    font-weight: 700;
+    font-size: 25px;
+    font-weight: 700;
+    font-family: 'Inter', sans-serif;
+    font-family: 'Prompt', sans-serif;
+    margin: 45px;
+}

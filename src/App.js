@@ -1,8 +1,8 @@
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import React from 'react';
-import Landing from './pages/Landing';
-import InvoiceGenerator from './pages/InvoiceGenerator';
+import Landing from './pages/Landing/Landing';
+import InvoiceGenerator from './pages/InvoiceGenerator/InvoiceGenerator';
 
 
 function App() {
