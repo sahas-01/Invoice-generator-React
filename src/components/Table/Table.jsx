@@ -5,6 +5,7 @@ import './Table.css'
 
 function Table({ data }) {
     var totalPrice;
+    var totalAmount = 0;
     console.log(data);
     const [description, setDescription] = useState("Product 1")
     const [quantity, setQuantity] = useState(5)
@@ -50,7 +51,7 @@ function Table({ data }) {
                         data.map(item => {
                             if (item.title === selectedOption) {
                                 totalPrice = parseInt(item.price) * quantity
-                                console.log(amount)
+                                totalAmount = totalAmount + totalPrice
                                 return (
                                     <>
                                         {item.price}

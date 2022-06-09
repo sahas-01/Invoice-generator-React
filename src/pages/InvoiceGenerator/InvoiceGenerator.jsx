@@ -16,7 +16,7 @@ function InvoiceGenerator() {
 
     }
     useEffect(() => {
-        axios.get('https://fakestoreapi.com/products?limit=5')
+        axios.get(`${process.env.REACT_APP_BACKEND_URL}/products?limit=10`)
             .then(res => {
                 setData(res.data);
                 console.log(res.data);
@@ -55,8 +55,6 @@ function InvoiceGenerator() {
                             <td className="font-bold text-textpurple">Amount</td>
                         </tr>
                     </thead>
-
-                    <Table data={data} />
                     {components.map((component, index) => {
                         return (
                             <Table data={data} />
