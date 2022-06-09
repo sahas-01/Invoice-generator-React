@@ -8,6 +8,13 @@ import '../../components/Table/Table.css'
 
 function InvoiceGenerator() {
     const [data, setData] = useState([])
+    const [components, setComponents] = useState(["Sample Component"]);
+
+    function addComponent() {
+
+        setComponents([...components, "Sample Component"])
+
+    }
     useEffect(() => {
         axios.get('https://fakestoreapi.com/products?limit=5')
             .then(res => {
@@ -32,6 +39,13 @@ function InvoiceGenerator() {
                     <p className="mt-4 mx-2">Paid on 05/04/2022</p>
                 </section>
 
+                <button
+                    className='bg-textpurple hover:bg-hoverpurple text-white font-bold py-2 -mt-16 px-8 mr-20 float-right rounded'
+                    onClick={addComponent}
+                >
+                    Add Item
+                </button>
+
                 <table width="100%" className="table">
                     <thead>
                         <tr>
@@ -43,8 +57,13 @@ function InvoiceGenerator() {
                     </thead>
 
                     <Table data={data} />
-                    <Table data={data} />
-                    <Table data={data} />
+                    {components.map((component, index) => {
+                        return (
+                            <Table data={data} />
+                        )
+
+                    }
+                    )}
 
                 </table>
 

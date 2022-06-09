@@ -7,6 +7,7 @@ module.exports = {
       colors: {
         bgpurple: '#F9F8FF',
         textpurple: '#7161C5',
+        hoverpurple: '#4F4099',
       },
     },
     plugins: [],

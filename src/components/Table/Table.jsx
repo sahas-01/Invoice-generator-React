@@ -4,25 +4,30 @@ import { useEffect } from 'react'
 import './Table.css'
 
 function Table({ data }) {
+    var totalPrice;
     console.log(data);
     const [description, setDescription] = useState("Product 1")
-    const [quantity, setQuantity] = useState("5")
-    const [price, setPrice] = useState("200")
-    const [amount, setAmount] = useState("1000")
+    const [quantity, setQuantity] = useState(5)
+    const [rate, setRate] = useState(0)
+    const [amount, setAmount] = useState(1000)
     const [selectedOption, setSelectedOption] = useState("");
     // console.log(data)
     const [list, setList] = useState([{
         description,
         quantity,
-        price,
+        rate,
         amount
     }])
     useEffect(() => {
         const calcAmount = () => {
-            setAmount(parseInt(quantity) * parseInt(price))
+            setAmount(quantity * rate)
+            console.log(quantity, amount)
+
         }
-        calcAmount(amount)
-    }, [quantity, price, setAmount])
+        calcAmount(parseInt(amount))
+    }, [quantity, rate, setAmount])
+
+    // calcAmount(amount)
 
     return (
         <>
@@ -41,9 +46,22 @@ function Table({ data }) {
                             }
                         </select>
                     </td>
-                    <td>{price}</td>
-                    <td><input type="number" className="qty-price" value={quantity} onChange={(e) => { setQuantity(e.target.value) }} /></td>
-                    <td>{amount}</td>
+                    <td>{
+                        data.map(item => {
+                            if (item.title === selectedOption) {
+                                totalPrice = parseInt(item.price) * quantity
+                                console.log(amount)
+                                return (
+                                    <>
+                                        {item.price}
+                                    </>
+                                )
+                            }
+                        }
+                        )
+                    }</td>
+                    <td><input type="number" className="qty-rate" value={quantity} onChange={(e) => { setQuantity(e.target.value) }} /></td>
+                    <td><input type="number" className="qty-rate" value={totalPrice} /></td>
                 </tr>
             </tbody>
         </>
