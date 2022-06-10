@@ -3,9 +3,9 @@ import axios from 'axios'
 import { useEffect } from 'react'
 import './Table.css'
 
-function Table({ data, totalAmount }) {
+function Table({ data, totalAmount, setTotalAmount }) {
     var totalPrice;
-    const [total, setTotal] = useState(0);
+    // const [total, setTotal] = useState(0);
     // console.log(props);
     const [description, setDescription] = useState("Product 1")
     const [quantity, setQuantity] = useState(5)
@@ -26,7 +26,7 @@ function Table({ data, totalAmount }) {
         for (let i = 0; i < rows.length; i++) {
             if (rows[i].className === "qty-amount") {
                 sum += isNaN(rows[i].value) ? 0 : parseInt(rows[i].value)
-                setTotal(sum)
+                setTotalAmount(sum)
             }
         }
     })
@@ -35,46 +35,39 @@ function Table({ data, totalAmount }) {
 
     return (
         <>
-            <>
 
-                <tbody className="table-body">
-                    <tr>
-                        <td>
-                            <select className="description-dropdown" value={selectedOption} onChange={(e) => setSelectedOption(e.target.value)}>
-                                {
-                                    data.map(item => {
-                                        return (
-                                            <option key={item.id} value={item.title}>{item.title}</option>
-                                        )
-                                    }
-                                    )
-                                }
-                            </select>
-                        </td>
-                        <td>{
-                            data.map(item => {
-                                if (item.title === selectedOption) {
-                                    totalPrice = parseInt(item.price) * quantity
-                                    totalAmount = totalAmount + totalPrice
+            <tbody className="table-body">
+                <tr>
+                    <td>
+                        <select className="description-dropdown" value={selectedOption} onChange={(e) => setSelectedOption(e.target.value)}>
+                            {
+                                data.map(item => {
                                     return (
-                                        <>
-                                            {item.price}
-                                        </>
+                                        <option key={item.id} value={item.title}>{item.title}</option>
                                     )
                                 }
+                                )
                             }
-                            )
-                        }</td>
-                        <td><input type="number" className="qty-rate" value={quantity} onChange={(e) => { setQuantity(e.target.value) }} /></td>
-                        <td><input type="number" className="qty-amount" value={totalPrice} /></td>
-                    </tr>
-                </tbody>
-            </>
-            <>
-                <div className="total-amount">
-                    <p>Total Amount: {total}</p>
-                </div>
-            </>
+                        </select>
+                    </td>
+                    <td>{
+                        data.map(item => {
+                            if (item.title === selectedOption) {
+                                totalPrice = parseInt(item.price) * quantity
+                                totalAmount = totalAmount + totalPrice
+                                return (
+                                    <>
+                                        {item.price}
+                                    </>
+                                )
+                            }
+                        }
+                        )
+                    }</td>
+                    <td><input type="number" className="qty-rate" value={quantity} onChange={(e) => { setQuantity(e.target.value) }} /></td>
+                    <td><input type="number" className="qty-amount" value={totalPrice} /></td>
+                </tr>
+            </tbody>
         </>
     )
 }

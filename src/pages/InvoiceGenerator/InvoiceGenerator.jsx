@@ -16,7 +16,7 @@ function InvoiceGenerator() {
     }];
     console.log(invoices);
     const [components, setComponents] = useState(["Sample Component"]);
-    let totalAmount = 0;
+    const [totalAmount, setTotalAmount] = useState(0);
     function addComponent() {
 
         setComponents([...components, "Sample Component"])
@@ -38,7 +38,7 @@ function InvoiceGenerator() {
     return (
         <>
             <Navbar />
-            <main className="mt-20 p-5 xl:max-w-4xl xl:mx-auto bg-white rounded shadow">
+            <main className="mt-20 p-5 xl:max-w-4xl xl:mx-auto bg-white rounded shadow main-content">
                 <div className="line bg-textpurple" style={{ width: '100%', height: '20px' }}>
 
                 </div>
@@ -66,13 +66,22 @@ function InvoiceGenerator() {
                     </thead>
                     {components.map((component, index) => {
                         return (
-                            <Table data={data} totalAmount={totalAmount} />
+                            <Table data={data} totalAmount={totalAmount} setTotalAmount={setTotalAmount} />
                         )
 
                     }
                     )}
 
                 </table>
+
+                <section className="m-4">
+                    <p className="font-extrabold text-black text-xl float-right mr-20" style={{
+                        border: '0.5px solid #DFDCF3',
+                        padding: '10px',
+                        borderRadius: '10px',
+                        width: '200px',
+                    }}> Total: &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; {totalAmount}</p>
+                </section>
 
 
             </main>
