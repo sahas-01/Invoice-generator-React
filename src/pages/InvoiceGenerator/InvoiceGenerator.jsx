@@ -8,13 +8,22 @@ import '../../components/Table/Table.css'
 
 function InvoiceGenerator() {
     const [data, setData] = useState([])
+    const invoices = [{
+        title: "Product 1",
+        price: 1000,
+        amount: 1000,
+        quantity: 5,
+    }];
+    console.log(invoices);
     const [components, setComponents] = useState(["Sample Component"]);
-
+    let totalAmount = 0;
     function addComponent() {
 
         setComponents([...components, "Sample Component"])
 
     }
+
+    console.log(components)
     useEffect(() => {
         axios.get(`${process.env.REACT_APP_BACKEND_URL}/products?limit=10`)
             .then(res => {
@@ -57,7 +66,7 @@ function InvoiceGenerator() {
                     </thead>
                     {components.map((component, index) => {
                         return (
-                            <Table data={data} />
+                            <Table data={data} totalAmount={totalAmount} />
                         )
 
                     }
