@@ -15,7 +15,6 @@
 .table {
     border: 2px solid #ACA5D6;
     border-radius: 100px;
-    padding: 30px;
 }
 
 .transaction-input::placeholder {
@@ -23,5 +22,13 @@
 }
 
 .main-content {
-    height: 150vh;
+    height: fit-content;
+}
+
+thead>tr>td {
+    padding: 10px;
+}
+
+.add-item-btn:active {
+    background: #3B3077;
 }
