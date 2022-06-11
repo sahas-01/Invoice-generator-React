@@ -4,16 +4,14 @@ import './Table.css'
 
 function Table({ data, totalAmount, setTotalAmount, list, setList }) {
     var totalPrice;
-    const [description, setDescription] = useState("Product 1")
     const [quantity, setQuantity] = useState(5)
     const [selectedOption, setSelectedOption] = useState("");
-    const [rate, setRate] = useState(0)
-    const [amount, setAmount] = useState(1000)
 
     useEffect(() => {
         let rows = document.querySelectorAll(".qty-amount")
         let sum = 0
-
+        // For displaying the total amount
+        // For displaying the total amount
         for (let i = 0; i < rows.length; i++) {
             if (rows[i].className === "qty-amount") {
                 sum += isNaN(rows[i].innerHTML) ? 0 : parseInt(rows[i].innerHTML)

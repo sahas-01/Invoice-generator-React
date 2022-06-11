@@ -3,8 +3,19 @@ import InvoiceHeading from '../../components/Heading/InvoiceHeading'
 import './Landing.css'
 import { Link } from 'react-router-dom'
 import Trademarkia from "../../assets/Trademarkia.png"
+import InvoiceSaved from '../../components/InvoiceSaved/InvoiceSaved'
+import { useNavigate } from "react-router-dom";
 
 function Landing() {
+    //To get from the localStorage
+    let list = localStorage.getItem("list")
+    list = JSON.parse(list)
+    console.log(list)
+    const navigate = useNavigate()
+    const generateInvoice = () => {
+        navigate("./invoicegenerate", { replace: true });
+    }
+
     return (
         <>
             <div className="landingcontainer">
@@ -13,16 +24,19 @@ function Landing() {
                 </nav>
                 <div className="landingcomponents">
                     <input type="text" placeholder="Enter name" className="name-input" />
-                    <Link to="/invoicegenerate">
-                        <button className="invoice-btn">Generate invoice</button>
-                    </Link>
+
+                    <button className="invoice-btn" onClick={generateInvoice}>Generate invoice</button>
 
                 </div>
                 <img src={Trademarkia} alt="invoice" className="invoice-img" />
             </div>
             <h4 className="savedinvoices-heading">Saved Invoices</h4>
+            <div className="savedinvoices-container">
+                <InvoiceSaved />
+            </div>
         </>
     )
+
 }
 
 export default Landing

@@ -22,16 +22,17 @@ function InvoiceGenerator() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+
+        //Removing the null and empty values from the object
         let o = Object.fromEntries(Object.entries(list).filter(([_, v]) =>
             v.selectedOption !== "" && v.quantity !== "" && v.quantity !== 0 && isNaN(v.totalAmount)
 
         ));
-        // console.log(o)
-        // console.log(list);
         localStorage.setItem("list", JSON.stringify(o));
+        window.location.href = "/";
 
     }
-
+    // Fetching data from the api
     useEffect(() => {
         axios.get(`${process.env.REACT_APP_BACKEND_URL}/products?limit=10`)
             .then(res => {
@@ -62,14 +63,14 @@ function InvoiceGenerator() {
                     </button>
                 </div>
                 <div className="line bg-textpurple" style={{ width: '100%', height: '20px' }}>
-
+                    {/* Purple line */}
                 </div>
-                <Header />
+                <Header /> {/* Header component for the heading Invoice Generator*/}
                 <section className="m-8">
                     <input type="text" placeholder="Enter transaction name" className="transaction-input" />
                     <p className="mt-4 mx-2">Paid on 05/04/2022</p>
                 </section>
-
+                {/* To add a new item to the invoice */}
                 <button
                     className='bg-textpurple hover:bg-hoverpurple text-white font-bold py-2 -mt-16 px-8 mr-20 float-right rounded add-item-btn'
                     onClick={addComponent}
@@ -86,6 +87,7 @@ function InvoiceGenerator() {
                             <td className="font-bold text-textpurple">Line Total</td>
                         </tr>
                     </thead>
+
                     {components.map((component, index) => {
                         return (
                             <Table
