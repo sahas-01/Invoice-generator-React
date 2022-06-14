@@ -1,8 +1,9 @@
 import React from 'react'
 import Header from '../Header/Header'
 
-function InvoiceSaved() {
+function InvoiceSaved({ list }) {
     //saved invoice component
+    console.log(list)
     return (
         <>
             <main className="mt-20 p-5 xl:max-w-4xl mx-10 bg-white rounded shadow main-content">
